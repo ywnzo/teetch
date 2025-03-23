@@ -41,30 +41,31 @@ function rand_color() {
         </div>
 
         <ul class="row gap-05r al-c">
-
-            <li>
-                <a class="nav-link bubble clickable black" href="class.php?action=create" title="Classes">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                </a>
-            </li>
-            <?php if($user['role'] == 'Teacher'): ?>
+            <?php if(isset($user)): ?>
                 <li>
-                    <a class="nav-link bubble clickable black" href="levels.php" title="Levels">
-                        <i class="fa-solid fa-stairs"></i>
+                    <a class="nav-link bubble clickable black" href="class.php?action=create" title="Classes">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </a>
+                </li>
+                <?php if($user['role'] == 'Teacher'): ?>
+                    <li>
+                        <a class="nav-link bubble clickable black" href="levels.php" title="Levels">
+                            <i class="fa-solid fa-stairs"></i>
+                        </a>
+                    </li>
+                <?php endif; ?>
+                </li>
+                <!--
+                <li><a class="bold bubble red clickable" href="">
+                    <i class="fa-solid fa-message"></i>
+                </a>
+                -->
+                <li>
+                    <a class="row al-c bold clickable" href="profile.php?user=<?php echo $userID; ?>" title="Your profile">
+                        <img class="profile-img" style="width: 38px; height: 38px; " src=<?= $user['image']; ?> alt="Profile">
                     </a>
                 </li>
             <?php endif; ?>
-            </li>
-            <!--
-            <li><a class="bold bubble red clickable" href="">
-                <i class="fa-solid fa-message"></i>
-            </a>
-            -->
-            <li>
-                <a class="row al-c bold clickable" href="profile.php?user=<?php echo $userID; ?>" title="Your profile">
-                    <img class="profile-img" style="width: 38px; height: 38px; " src=<?= $user['image']; ?> alt="Profile">
-                </a>
-            </li>
             <!--
             <li>
                 <a class="nav-link bubble horizontal red" href="logout.php" title="Logout">
@@ -76,9 +77,6 @@ function rand_color() {
     </div>
 </div>
 
-<!--
-<div class="background-image left">
-</div>
-<div class="background-image right">
-</div>
--->
+
+<div class="background-image left"></div>
+<div class="background-image right"></div>

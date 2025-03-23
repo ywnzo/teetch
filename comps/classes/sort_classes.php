@@ -1,10 +1,9 @@
 <?php
 
 function sort_classes($classes) {
-    $clss = ['Mon' => [], 'Tue' => [], 'Wed' => [], 'Thu' => [], 'Fri' => [], 'Sat' => [], 'Sun' => []];
+    $classesSorted = ['Mon' => [], 'Tue' => [], 'Wed' => [], 'Thu' => [], 'Fri' => [], 'Sat' => [], 'Sun' => []];
     foreach($classes as $class) {
         $times = json_decode($class['times'], true);
-        if(!isset($times) || !is_array($times)) { continue; }
         foreach($times as $time) {
             if(!isset($time['day']) || !isset($time['start']) || !isset($time['end'])) { continue; }
             $day = $time['day'];
@@ -13,19 +12,17 @@ function sort_classes($classes) {
             $class['time']['day'] = $day;
             $class['time']['start'] = $timeStart;
             $class['time']['end'] = $timeEnd;
-            $clss[$day][$timeStart] = $class;
+            $classesSorted[$day][] = $class;
         }
     }
 
-    foreach($clss as $day => $classes) {
-        ksort($clss[$day]);
+    foreach($classesSorted as $day => $classes) {
+        ksort($classesSorted[$day]);
     }
-    return $clss;
+    return $classesSorted;
 }
 
-$classes = DB::select('*', 'classes', "teacherID = '$userID'");
-$classes = !isset($classes) || !is_array($classes) || empty($classes) ? [] : $classes;
-$classes = Utils::has_string_keys($classes) ? [$classes] : $classes;
+$classes = Utils::get_array(DB::select('*', 'classes', "teacherID = '$userID' OR JSON_VALID(students)"));
 $classesSorted = sort_classes($classes);
 $days = array_keys($classesSorted);
 

@@ -19,8 +19,18 @@ if(!$isTeacher) {
 
 if(isset($_GET['delete'])) {
     DB::delete('classes', "ID = '$classID'");
+    $updates = Utils::get_array(DB::select('file', 'classUpdates', "classID = '$classID'"));
+    print_r($updates);
+
+    foreach($updates as $update) {
+        if(isset($update['file'])) {
+            unlink(getcwd() . '/public/storage/uploads/' . $update['file']);
+        }
+    }
+
     DB::delete('classUpdates', "classID = '$classID'");
     DB::delete('levelRequirementsStatus', "classID = '$classID' AND ownerID = '{$_COOKIE['userID']}'");
+
     header("Location: index.php");
 }
 

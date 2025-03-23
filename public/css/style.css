@@ -256,23 +256,26 @@ input[type="submit"]:hover {
     min-height: 80vh;
 }
 .background-image {
-    background-image: url('../img/background.png');
-    background-repeat: repeat;
+    //background-image: url('../img/layered-waves-haikei.svg');
+    //background: var(--black);
+    //background-image: linearGradient(to left, var(--black), transparent);
+   // background-image: linear-gradient(to left, transparent 0% 10% , var(--black) 20% 100%);
+    background-repeat: no-repeat;
     background-size: contain;
+    aspect-ratio: 1;
     position: fixed;
     top: 0;
-    height: 100vh;
-    width: 8vw;
+    min-height: 100vh;
+    max-width: 400px;
+    z-index: -1;
 }
 .left {
     left: 0;
 }
 .right {
     right: 0;
-    -webkit-transform: scaleX(-1);
+    -webkit-transform: scaleX(1);
     transform: scaleX(-1);
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
 }
 
 .list-item {
@@ -400,6 +403,7 @@ input[type="submit"]:hover {
 .update-content {
     width: 100%;
     border-radius: 16px;
+    overflow: hidden;
 }
 .update-content input {
     width: 100%;
@@ -415,6 +419,8 @@ input[type="submit"]:hover {
 }
 .update-img {
     width: 100%;
+    box-sizing: border-box;
+    object-fit: contain;
 }
 .update-file {
     display: flex;

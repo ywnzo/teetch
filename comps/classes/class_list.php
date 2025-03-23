@@ -5,10 +5,8 @@
 <?php if(empty($classes)): ?>
     <p class="bubble black bold">You have no classes.</p>
 <?php else: ?>
-    <?php for($i=0;$i<count($days);$i++): ?>
-        <?php $dayName = $days[$i]; ?>
+    <?php foreach($days as $dayName): ?>
         <?php $day = $classesSorted[$dayName]; ?>
-
         <?php if(!empty($day)): ?>
             <div class="col gap-05r">
                 <h3 class="bubble black"><?= $dayName ?></h3>
@@ -24,5 +22,5 @@
                 </div>
             </div>
         <?php endif; ?>
-    <?php endfor ?>
+    <?php endforeach; ?>
 <?php endif; ?>

@@ -24,7 +24,9 @@ function ajax_file_upload(files_obj) {
     const form_data = new FormData();
     for(i=0; i<files_obj.length; i++) {
       form_data.append('classID', params.get('class'));
-      form_data.append('lessonID', params.get('lesson'));
+      if(params.get('lesson') !== null) {
+        form_data.append('lessonID', params.get('lesson'));
+      }
       form_data.append('file[]', files_obj[i]);
       form_data.append('table', table);
     }

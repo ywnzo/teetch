@@ -19,7 +19,7 @@ async function get_levels() {
     if (xhttp.status === 200) {
       create_level_options(xhttp.responseText);
     } else {
-      console.error('Error updating class');
+      console.error('Error getting levels');
     }
   };
   xhttp.send(formData);

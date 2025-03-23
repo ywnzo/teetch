@@ -1,11 +1,9 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+include $_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php';
 
-$conn = mysqli_connect('localhost', 'admin', 'Pecinka21*', 'teecheroo');
-if (!$conn) {
-    die("Connection error: " . mysqli_connect_error());
+if(!$conn) {
+    die($_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php');
 }
 
 if(!isset($_POST['setID'])) {

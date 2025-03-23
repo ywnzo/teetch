@@ -1,11 +1,6 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-$conn = mysqli_connect('localhost', 'admin', 'Pecinka21*', 'teecheroo');
-if (!$conn) {
-    die("Connection error: " . mysqli_connect_error());
-}
+include_once $_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php';
 
 $dir = '../public/storage/uploads/';
 $uploadOk = 1;

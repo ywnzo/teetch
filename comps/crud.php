@@ -1,6 +1,6 @@
 <?php
 
-include('../config/db_connect.php');
+include_once $_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php';
 
 function update() {
     $table = $_POST['table'];

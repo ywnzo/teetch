@@ -56,7 +56,7 @@ if(isset($_POST['add_lesson_plan'])) { create_lesson_plan(); }
         </div>
 
         <div class="col gap-1r">
-            <h3>Insert a lesson plan</h3>
+            <h2>Insert a lesson plan</h2>
             <form method="POST" class="col space-between gap-05r">
                 <input type="text" name="class_name" placeholder="Enter lesson plan name..." class="w-100 red" required>
 
@@ -76,7 +76,7 @@ if(isset($_POST['add_lesson_plan'])) { create_lesson_plan(); }
         </div>
 
         <div class="col gap-1r" style="margin-top: 1rem;">
-            <h3>Your lesson plans</h3>
+            <h2>Your lesson plans</h2>
             <div class="col" style="gap: 0.2rem;">
                 <?php foreach($lessons as $lesson): ?>
                     <a href="lesson_plan.php?class=<?php echo $lesson['classID'] ?>&lesson=<?php echo $lesson['ID'] ?>" class="bubble bold <?php echo rand_color() ?> horizontal">

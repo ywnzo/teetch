@@ -1,14 +1,21 @@
 :root {
-    --width-content: 90vw;
-    --width-min: 390px;
+    @media only screen and (max-width: 600px) {
+        --width-content: 90vw;
+        --width-min: 390px;
+        --class-info-width: 100;
+        --class-info-direction: column;
+    }
     @media only screen and (min-width: 600px) {
         --width-content: 70vw;
+        --class-info-direction: column;
     }
     @media only screen and (min-width: 769px) {
         --width-content: 60vw;
+        --class-info-direction: column;
     }
     @media only screen and (min-width: 992px) {
         --width-content: 50vw;
+        --class-info-direction: row;
     }
     @media only screen and (min-width: 1200px) {
         --width-content: 40vw;
@@ -290,17 +297,20 @@ input[type="submit"]:hover {
 }
 
 #time-container {
+    width: calc(100%);
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0.2rem;
 }
 .time {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     font-size: small;
     font-weight: bold;
+    text-wrap: nowrap;
     background-color: var(--black);
     color: whitesmoke;
     padding: 0.5rem;
@@ -359,6 +369,14 @@ input[type="submit"]:hover {
 .text-content:focus {
     outline: none;
     border: 2px solid var(--black);
+}
+
+#classInfo {
+    width: var(--class-info-width);
+    //flex-direction: var(--class-info-direction);
+    box-sizing: border-box;
+    display: flex;
+    gap: 1rem;
 }
 
 #file-wrapper {

@@ -3,8 +3,6 @@ var day = document.getElementById('day');
 var timeStart = document.getElementById('time-start');
 var timeEnd = document.getElementById('time-end');
 
-var index = 0;
-
 function reload_index() {
   var hiddens = document.querySelectorAll('.time-hidden');
   for(var i = 0; i < hiddens.length; i++) {
@@ -12,27 +10,26 @@ function reload_index() {
   }
 }
 
+function on_time_click(e) {
+  e.target.remove();
+  reload_index();
+}
+
 function create_time() {
   var timeElement = document.createElement('div');
   timeElement.textContent = day.value + ', ' + timeStart.value + ' - ' + timeEnd.value;
   timeElement.classList.add('clickable');
   timeElement.classList.add('time');
+  timeElement.addEventListener('click', on_time_click);
   document.getElementById('time-container').appendChild(timeElement);
 
   var hidden = document.createElement('input');
   hidden.type = 'hidden';
+  var index = document.querySelectorAll('.time').length <= 0 ? 0 :(document.querySelectorAll('.time').length - 1)
   hidden.name = 'time' + index;
   hidden.classList.add('time-hidden');
   hidden.value = day.value + ', ' + timeStart.value + ' - ' + timeEnd.value;
-  document.getElementById('time-container').appendChild(hidden);
-  index += 1;
-  timeElement.addEventListener('click', () => {
-    timeElement.remove();
-    hidden.remove();
-    index -= 1;
-    reload_index();
-  });
-
+  timeElement.appendChild(hidden);
 }
 
 function main() {

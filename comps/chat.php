@@ -92,17 +92,14 @@ $canInvite = false;
                                     <a href="class_levels.php?class=<?= $classID ?>" class="bubble bold clickable <?php echo rand_color()?>">
                                         <i class="fa-solid fa-stairs"></i>
                                     </a>
+                                    <a href="class.php?class=<?= $classID ?>&action=edit" class="bubble bold clickable <?php echo rand_color()?>">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </a>
                                 <?php endif; ?>
 
-                                <?php if($table === "lessonUpdates"): ?>
-                                    <a href="lesson_plan.php?class=<?= $classID ?>&lesson=<?= $lessonID ?>&delete=true" class="bubble bold clickable <?php echo rand_color()?>">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                <?php else: ?>
-                                    <a href="class.php?action=view&class=<?= $classID ?>&delete=true" class="bubble bold clickable <?php echo rand_color()?>">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </a>
-                                <?php endif; ?>
+                                <a href="class.php?action=view&class=<?= $classID ?>&delete=true" class="bubble bold clickable <?php echo rand_color()?>">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
                             <?php endif; ?>
 
                         </div>

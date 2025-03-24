@@ -52,14 +52,14 @@ if(!isset($teacher)) {
         </div>
     </div>
 
-    <div class="row space-between">
-        <div class="row gap-05r">
+    <div id="<?php echo count($times) <= 2 ? '' : 'classInfo' ?>" class="<?php echo count($times) <= 2 ? 'row' : 'col' ?> space-between">
+        <div id="time-container">
             <?php foreach($times as $time): ?>
                 <p class="time"><?= $time['day'] ?> <?= $time['start'] ?> - <?= $time['end'] ?></p>
             <?php endforeach; ?>
         </div>
 
-        <a href="profile.php?user=<?= $class['teacherID'] ?>" class="row gap-05r al-c bold horizontal">
+        <a href="profile.php?user=<?= $class['teacherID'] ?>" class="row gap-05r al-c js-e bold horizontal">
             <p class="f-large">
                 <?= $teacher['name'] ?>
             </p>

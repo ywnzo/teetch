@@ -1,14 +1,11 @@
-Class time edit
-Class name edit
-
 Lesson time edit
 Lesson name edit
 
 Adding students
 Profile edit
-MAke it so after you change level it saves it and shows the page of it
 
-Secure and unify DB creds
 Secure all inputs and outputs
 
 Index Page
+
+?? MAke it so after you change level it saves it and shows the page of it

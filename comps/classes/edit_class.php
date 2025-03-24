@@ -1,5 +1,7 @@
 <?php
 
+$mssg = "";
+
 function get_times() {
     $times = [];
     $index = 0;
@@ -20,35 +22,54 @@ function get_times() {
     return $times;
 }
 
-function create_class($userID) {
+function update_class() {
+    $classID = $_GET['class'];
+    $class = DB::select('*', 'classes', "ID = '$classID'");
+    $students = $class['students'];
+    $userID = $_COOKIE['userID'];
     $class_name = htmlspecialchars($_POST["class_name"]);
     $times = json_encode(get_times());
-    DB::insert(
+    DB::update(
         "classes",
-        "name, teacherID, link, students, times",
-        "'$class_name', '$userID', '', '[]', '$times'"
+        "name = '$class_name', teacherID = '$userID', link = '', students = '$students', times = '$times'",
+        "ID = '{$_GET['class']}' AND teacherID = '$userID'"
     );
-
-    global $conn;
-    $sql = "SELECT LAST_INSERT_ID() as id";
-    $result = mysqli_query($conn, $sql);
-    $result = mysqli_fetch_assoc($result);
-    return $result['id'];
 }
 
-if (isset($_POST["create-class"])) {
-    $classID = create_class($userID);
+if(!isset($_GET['class'])) {
+    header('Location: index.php');
+}
+
+if (isset($_POST["update-class"])) {
+    update_class();
+    $mssg = "Class updated successfully!";
 }
 
 $day = isset($_GET["day"]) ? $_GET["day"] : date("D");
-$levels = Utils::get_array(DB::select("*", "levelSets", "ownerID = '$userID'"));
+$class = DB::select('*', 'classes', "ID = '{$_GET['class']}'");
+
+if(!isset($class)) {
+    header('Location: index.php');
+}
+
+
+
+$times = json_decode($class['times'], true);
+$timeIndex = 0;
+
 ?>
 
 <div class="col gap-1r" style="margin-bottom: 2rem;">
-    <h2>Create a new class</h2>
+    <div id="breadcrumb" class="row gap-05r al-c bold">
+        <a href="class.php?class=<?= $class['ID'] ?>&action=view" class="black clickable"><?= $class['name'] ?></a>
+        /
+        <p class="red">Edit Class</p>
+    </div>
+
+    <h2>Edit class</h2>
     <form method="POST" class="col space-between gap-1r">
         <div class="col gap-05r">
-            <input type="text" name="class_name" placeholder="Enter class Name" class="w-100 red" required>
+            <input type="text" name="class_name" placeholder="Enter class Name" value="<?php echo $class['name']; ?>" class="w-100 red" required>
 
             <div class="row al-c space-between">
                 <div class="row al-c gap-05r">
@@ -81,15 +102,22 @@ $levels = Utils::get_array(DB::select("*", "levelSets", "ownerID = '$userID'"));
 
                     <p class="bubble black clickable bold" id="add-time-btn"><i class="fa-solid fa-plus"></i> <i class="fa-solid fa-clock"></i></p>
                 </div>
-
             </div>
         </div>
 
 
-        <div id="time-container"></div>
-        <button name="create-class" class="bubble <?php echo rand_color(); ?> clickable"><i class="fa-solid fa-plus"></i></button>
-
+        <div id="time-container">
+            <?php foreach($times as $time): ?>
+                <div class="time clickable" onClick="on_time_click(event)">
+                    <?php echo $time['day'] . ', ' . $time['start'] . ' - ' . $time['end']; ?>
+                    <input type="hidden" name="time<?php echo $timeIndex++ ?>" value="<?php echo $time['day'] . ', ' . $time['start'] . ' - ' . $time['end']; ?>">
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <button name="update-class" class="bubble <?php echo rand_color(); ?> clickable"><i class="fa-solid fa-check"></i></i></button>
     </form>
+
+    <p><?php echo $mssg ?></p>
 </div>
 
 <script src="public/js/create_class.js"></script>

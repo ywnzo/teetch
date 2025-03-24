@@ -17,6 +17,8 @@ if(isset($_GET['action'])) {
         include('comps/classes/view_classes.php');
     } elseif($action == 'view') {
         include('comps/classes/view_class.php');
+    } elseif($action == 'edit') {
+        include('comps/classes/edit_class.php');
     }
 }
 

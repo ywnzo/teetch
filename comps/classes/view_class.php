@@ -30,6 +30,8 @@ if(isset($_GET['delete'])) {
 
     DB::delete('classUpdates', "classID = '$classID'");
     DB::delete('levelRequirementsStatus', "classID = '$classID' AND ownerID = '{$_COOKIE['userID']}'");
+    DB::delete('lessons', "classID = '$classID' AND teacherID = '{$_COOKIE['userID']}'");
+    DB::delete('lessonUpdates', "classID = '$classID' AND ownerID = '{$_COOKIE['userID']}'");
 
     header("Location: index.php");
 }
@@ -52,19 +54,23 @@ if(!isset($teacher)) {
         </div>
     </div>
 
-    <div id="<?php echo count($times) <= 2 ? '' : 'classInfo' ?>" class="<?php echo count($times) <= 2 ? 'row' : 'col' ?> space-between">
+    <div id="<?php echo count($times) <= 2 ? '' : 'classInfo' ?>" class="col gap-1r space-between">
         <div id="time-container">
             <?php foreach($times as $time): ?>
                 <p class="time"><?= $time['day'] ?> <?= $time['start'] ?> - <?= $time['end'] ?></p>
             <?php endforeach; ?>
         </div>
 
-        <a href="profile.php?user=<?= $class['teacherID'] ?>" class="row gap-05r al-c js-e bold horizontal">
-            <p class="f-large">
-                <?= $teacher['name'] ?>
-            </p>
-            <img src=<?= $teacher['image'] ?> alt="" class="profile-img" style="width: 32px; height: 32px;">
-        </a>
+        <div class="row al-c space-between">
+            <a href="profile.php?user=<?= $class['teacherID'] ?>" class="row gap-05r al-c bold horizontal">
+                <img src=<?= $teacher['image'] ?> alt="" class="profile-img" style="width: 32px; height: 32px;">
+                <p class="f-large">
+                    <?= $teacher['name'] ?>
+                </p>
+            </a>
+            <a href="join_class.php?class=<?= $class['ID'] ?>" class="bubble <?php echo rand_color(); ?> bold clickable"><i class="fa-solid fa-user-plus"></i></a>
+        </div>
+
     </div>
 
     <?php include('comps/chat.php'); ?>

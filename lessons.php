@@ -23,13 +23,12 @@ function create_lesson_plan() {
     }
 
     $classID = $_GET['class'];
+    $userID = $_COOKIE['userID'];
     $name = $_POST['class_name'];
     $date = $_POST['date'] . ' ' . $_POST['time'];
-    DB::insert('lessons', 'classID, name, date', "'$classID', '$name', '$date'");
+    DB::insert('lessons', 'classID, teacherID, name, date', "'$classID', '$userID', '$name', '$date'");
     header('Location: lessons.php?class=' . $classID);
 }
-
-
 
 if(!isset($_GET['class'])) { header('Location: index.php'); }
 $classID = $_GET['class'];
@@ -79,7 +78,7 @@ if(isset($_POST['add_lesson_plan'])) { create_lesson_plan(); }
             <h2>Your lesson plans</h2>
             <div class="col" style="gap: 0.2rem;">
                 <?php foreach($lessons as $lesson): ?>
-                    <a href="lesson_plan.php?class=<?php echo $lesson['classID'] ?>&lesson=<?php echo $lesson['ID'] ?>" class="bubble bold <?php echo rand_color() ?> horizontal">
+                    <a href="lesson_plan.php?class=<?php echo $lesson['classID'] ?>&lesson=<?php echo $lesson['ID'] ?>&action=view" class="bubble bold <?php echo rand_color() ?> horizontal">
                         <div class="w-100 row space-between">
                             <p><?php echo $lesson['name'] ?></p>
                             <div class="row gap-1r">

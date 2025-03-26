@@ -55,11 +55,6 @@ function rand_color() {
                     </li>
                 <?php endif; ?>
                 </li>
-                <!--
-                <li><a class="bold bubble red clickable" href="">
-                    <i class="fa-solid fa-message"></i>
-                </a>
-                -->
                 <li>
                     <a class="row al-c bold clickable" href="profile.php?user=<?php echo $userID; ?>" title="Your profile">
                         <img class="profile-img" style="width: 38px; height: 38px; " src=<?= $user['image']; ?> alt="Profile">
@@ -77,6 +72,4 @@ function rand_color() {
     </div>
 </div>
 
-
-<div class="background-image left"></div>
-<div class="background-image right"></div>
+<div class="background"></div>

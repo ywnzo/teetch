@@ -16,7 +16,7 @@ if(isset($_COOKIE['sessionID'])) {
 }
 if(!$authOK) {
     $scriptName = basename($_SERVER['SCRIPT_NAME']);
-    if($scriptName != 'index.php' && $scriptName != 'cards.php' && $scriptName != 'flash.php') {
+    if($scriptName != 'index.php' && $scriptName != 'join_class.php') {
         header('Location: index.php');
     }
 }

@@ -95,6 +95,10 @@ $canInvite = false;
                                     <a href="class.php?class=<?= $classID ?>&action=edit" class="bubble bold clickable <?php echo rand_color()?>">
                                         <i class="fa-solid fa-gear"></i>
                                     </a>
+                                <?php else: ?>
+                                    <a href="lesson_plan.php?class=<?= $classID ?>&lesson=<?php echo $lessonID ?>&action=edit" class="bubble bold clickable <?php echo rand_color()?>">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </a>
                                 <?php endif; ?>
 
                                 <a href="class.php?action=view&class=<?= $classID ?>&delete=true" class="bubble bold clickable <?php echo rand_color()?>">

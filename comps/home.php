@@ -95,7 +95,7 @@ $toTomorrowWeekday = date('D d/m', strtotime('+2 day'));
             </a>
         </div>
 
-        <div class="col gap-05r">
+        <div class="col gap-2r">
             <?php include('comps/classes/class_list.php'); ?>
         </div>
     </div>

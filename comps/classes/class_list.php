@@ -10,7 +10,7 @@
         <?php if(!empty($day)): ?>
             <div class="col gap-05r">
                 <h3 class="bubble black"><?= $dayName ?></h3>
-                <div class="col" style="gap: 0rem;">
+                <div class="col" style="gap: 0.2rem;">
                     <?php foreach ($day as $class): ?>
                         <a href="class.php?action=view&class=<?= $class['ID'] ?>" class="list-item <?php echo rand_color(); ?> horizontal" title="<?= $class['name'] ?>">
                             <h3 class="f-large t-over-el"><?= $class['name'] ?></h3>

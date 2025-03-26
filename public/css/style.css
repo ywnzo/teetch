@@ -33,6 +33,8 @@
     --red: #F76C5E;
     --yellow: #F5DD90;
     --black: #2F2F2F;
+
+    --content-bg-color: rgba(255, 255, 255, 1);
 }
 
 html, body {
@@ -50,6 +52,7 @@ body {
     background-color: white;
     font-family: "Funnel Sans", serif;
     color: var(--black);
+    //color: white;
 
 }
 h1, h2, h3, h4, h5, p {
@@ -65,9 +68,25 @@ a:hover {
 footer {
     width: var(--width-content);
     min-width: var(--width-min);
-    padding: 0.5rem 0rem;
-    border-top: 2px solid var(--black);
-    margin-top: 2rem;
+    border: 2px solid var(--black);
+    border-top: 0px;
+    border-radius: 8px;
+    //border-bottom-left-radius: 0px;
+    //border-bottom-right-radius: 0px;
+    padding: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    background: var(--content-bg-color);
+}
+footer ul, footer li {
+    all: unset;
+}
+footer a {
+    text-decoration: underline;
+}
+footer a:hover {
+    color: var(--red);
 }
 input {
     //all: unset;
@@ -199,10 +218,16 @@ input[type="submit"]:hover {
 .header {
     width: var(--width-content);
     min-width: var(--width-min);
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--black);
+    border: 2px solid var(--black);
+    border-top: 0px;
+    border-radius: 8px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
+    background: var(--content-bg-color);
+
 }
 
 .fa-solid {
@@ -261,19 +286,31 @@ input[type="submit"]:hover {
     width: var(--width-content);
     min-width: var(--width-min);
     min-height: 80vh;
+    padding: 2rem;
+    background: var(--content-bg-color);
+    border: 2px solid var(--black);
+    border-top: 0px;
+    border-radius: 8px;
+}
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../img/background_blob_dark.svg');
+    //background-color: var(--black);
+    position: fixed;
+    background-size: auto;
+    z-index: -1;
 }
 .background-image {
     //background-image: url('../img/layered-waves-haikei.svg');
     //background: var(--black);
-    //background-image: linearGradient(to left, var(--black), transparent);
-   // background-image: linear-gradient(to left, transparent 0% 10% , var(--black) 20% 100%);
+    background-image: url('../img/background_poly.svg');
     background-repeat: no-repeat;
-    background-size: contain;
-    aspect-ratio: 1;
+    background-size: cover;
     position: fixed;
     top: 0;
     min-height: 100vh;
-    max-width: 400px;
+    width: 180px;
     z-index: -1;
 }
 .left {
@@ -665,7 +702,7 @@ input[type="submit"]:hover {
 }
 .clickable:hover {
     cursor: pointer;
-    translate: 0px 4px;
+    transform: translateY(4px);
 }
 .horizontal {
     cursor: pointer;

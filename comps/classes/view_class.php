@@ -68,7 +68,10 @@ if(!isset($teacher)) {
                     <?= $teacher['name'] ?>
                 </p>
             </a>
-            <a href="join_class.php?class=<?= $class['ID'] ?>" class="bubble <?php echo rand_color(); ?> bold clickable"><i class="fa-solid fa-user-plus"></i></a>
+
+            <?php if($isTeacher): ?>
+                <a href="join_class.php?class=<?= $class['ID'] ?>" class="bubble <?php echo rand_color(); ?> bold clickable"><i class="fa-solid fa-user-plus"></i></a>
+            <?php endif; ?>
         </div>
 
     </div>

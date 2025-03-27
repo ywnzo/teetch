@@ -7,8 +7,8 @@ if(!isset($_POST['updateID']) || !isset($_POST['classID'])) {
 }
 
 $table = isset($_POST['lessonID']) ? 'lessonUpdates' : 'classUpdates';
-$updateID = $_POST['updateID'];
-$lessonID = isset($_POST['lessonID']) ? $_POST['lessonID'] : null;
+$updateID = htmlspecialchars($_POST['updateID']);
+$lessonID = isset($_POST['lessonID']) ? htmlspecialchars($_POST['lessonID']) : null;
 
 $sql = "SELECT file FROM $table WHERE ID = '$updateID'";
 $update = mysqli_query($conn, $sql);

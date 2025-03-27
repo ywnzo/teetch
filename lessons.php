@@ -22,16 +22,16 @@ function create_lesson_plan() {
         return;
     }
 
-    $classID = $_GET['class'];
-    $userID = $_COOKIE['userID'];
-    $name = $_POST['class_name'];
-    $date = $_POST['date'] . ' ' . $_POST['time'];
+    $classID = htmlspecialchars($_GET['class']);
+    $userID = htmlspecialchars($_COOKIE['userID']);
+    $name = htmlspecialchars($_POST['class_name']);
+    $date = htmlspecialchars($_POST['date']) . ' ' . htmlspecialchars($_POST['time']);
     DB::insert('lessons', 'classID, teacherID, name, date', "'$classID', '$userID', '$name', '$date'");
     header('Location: lessons.php?class=' . $classID);
 }
 
 if(!isset($_GET['class'])) { header('Location: index.php'); }
-$classID = $_GET['class'];
+$classID = htmlspecialchars($_GET['class']);
 $class = DB::select('*', 'classes', "ID = '$classID'");
 $times = json_decode($class['times'], true);
 

@@ -4,15 +4,6 @@ include('config/verify_login.php');
 
 include('classes/utils.php');
 
-if(isset($_GET['url'])) {
-    $id = $_GET['url'];
-    $url = DB::select('original', 'urls', "short = '$id'");
-    if($url) {
-        $url = $url['original'];
-        header("Location: $url");
-    }
-}
-
 if(!$authOK) {
     include('auth.php');
 }

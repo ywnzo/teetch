@@ -5,14 +5,14 @@ include('config/verify_login.php');
 include('classes/utils.php');
 
 function update_lesson_plan($lessonID) {
-    $userID = $_COOKIE['userID'];
-    $name = $_POST['lesson_name'];
-    $date = $_POST['date'] . ' ' . $_POST['time'];
+    $userID = htmlspecialchars($_COOKIE['userID']);
+    $name = htmlspecialchars($_POST['lesson_name']);
+    $date = htmlspecialchars($_POST['date']) . ' ' . htmlspecialchars($_POST['time']);
     DB::update('lessons', "name = '$name', date = '$date'", "ID = '$lessonID' AND teacherID = '$userID'");
 }
 
 function get_lesson() {
-    $lessonID = $_GET['lesson'];
+    $lessonID = htmlspecialchars($_GET['lesson']);
     $lesson = DB::select('*', 'lessons', "ID = '$lessonID'");
     if(!$lesson || !is_array($lesson) || empty($lesson)) {
         header("Location: index.php");
@@ -21,7 +21,7 @@ function get_lesson() {
 }
 
 function get_clss() {
-    $classID = $_GET['class'];
+    $classID = htmlspecialchars($_GET['class']);
     $class = DB::select('*', 'classes', "ID = '$classID'");
     if(!$class || !is_array($class) || empty($class)) {
         header("Location: index.php");

@@ -126,7 +126,7 @@ $canInvite = false;
                 </div>
 
                 <button type="submit" name="update-submit" class="bubble bold clickable <?php echo rand_color()?>" style="min-width: 100%;">
-                    <i class="fa-solid fa-plus"></i>
+                    <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
             <p><?= $error ?></p>

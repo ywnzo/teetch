@@ -10,12 +10,12 @@ function get_times() {
             break;
         }
         $time = explode(", ", $_POST["time" . $index]);
-        $day = $time[0];
+        $day = htmlspecialchars($time[0]);
         $time = explode(" - ", $time[1]);
         $times[] = [
             "day" => $day,
-            "start" => $time[0],
-            "end" => $time[1],
+            "start" => htmlspecialchars($time[0]),
+            "end" => htmlspecialchars($time[1]),
         ];
         $index += 1;
     }
@@ -23,10 +23,10 @@ function get_times() {
 }
 
 function update_class() {
-    $classID = $_GET['class'];
+    $classID = htmlspecialchars($_GET['class']);
     $class = DB::select('*', 'classes', "ID = '$classID'");
     $students = $class['students'];
-    $userID = $_COOKIE['userID'];
+    $userID = htmlspecialchars($_COOKIE['userID']);
     $class_name = htmlspecialchars($_POST["class_name"]);
     $times = json_encode(get_times());
     DB::update(

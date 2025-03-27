@@ -12,20 +12,20 @@ if($user['role'] != 'Teacher') {
 }
 
 if(isset($_POST['add_level_set'])) {
-    $name = $_POST['name'];
+    $name = htmlspecialchars($_POST['name']);
     $ownerID = $userID;
     DB::insert('levelSets', "name, ownerID", "'$name', '$userID'");
 }
 
 if(isset($_POST['add_level'])) {
-    $name = $_POST['levelName'];
-    $levelSetID = $_GET['set'];
+    $name = htmlspecialchars($_POST['levelName']);
+    $levelSetID = htmlspecialchars($_GET['set']);
     $setOrder = DB::select('MAX(setOrder) as maxOrder', 'levels', "setID = '$levelSetID'")['maxOrder'] + 1;
     DB::insert('levels', "name, ownerID, setID, setOrder", "'$name', '$userID', '$levelSetID', '$setOrder'");
 }
 
 if(isset($_GET['action']) && $_GET['action'] == 'deleteSet') {
-    $setID = $_GET['set'];
+    $setID = htmlspecialchars($_GET['set']);
     $levelID = DB::select('ID', 'levels', "setID = '$setID'");
     print_r($levelID);
 
@@ -43,7 +43,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'deleteSet') {
 $levelSets = Utils::get_array(DB::select('*', 'levelSets', "ownerID = '$userID'"));
 
 if(isset($_GET['set'])) {
-    $setID = $_GET['set'];
+    $setID = htmlspecialchars($_GET['set']);
     $set = DB::select('*', 'levelSets', "ID = '$setID' AND ownerID = '$userID'");
     if(!isset($set) or empty($set) or !($set)) {
         header('Location: levels.php');
@@ -51,7 +51,7 @@ if(isset($_GET['set'])) {
     $levels = Utils::get_array(DB::select('*', 'levels', "setID = '$setID' AND ownerID = '$userID' ORDER BY setOrder"));
 
     if(isset($_GET['level'])) {
-        $levelID = $_GET['level'];
+        $levelID = htmlspecialchars($_GET['level']);
         $level = DB::select('*', 'levels', "ID = '$levelID' AND ownerID = '$userID'");
     }
 }

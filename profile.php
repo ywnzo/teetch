@@ -9,7 +9,7 @@ if(!isset($_GET['user'])) {
     header('Location: index.php');
 }
 
-$profileUserID = $_GET['user'];
+$profileUserID = htmlspecialchars($_GET['user']);
 $profileUser = null;
 
 if($profileUserID != $userID) {

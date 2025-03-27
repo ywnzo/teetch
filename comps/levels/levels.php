@@ -1,13 +1,13 @@
 <?php
 
 if(isset($_POST['add_requirement'])) {
-    $levelID = $_POST['levelID'];
-    $requirementName = $_POST['requirementName'];
+    $levelID = htmlspecialchars($_POST['levelID']);
+    $requirementName = htmlspecialchars($_POST['requirementName']);
     DB::insert('levelRequirements', "ownerID, levelID, name", "'$userID', '$levelID', '$requirementName'");
 }
 
 if(isset($_GET['action']) && $_GET['action'] == 'deleteLevel') {
-    $levelID = $_GET['id'];
+    $levelID = htmlspecialchars($_GET['id']);
     DB::delete('levels', "ID = '$levelID' AND ownerID = '$userID'");
     DB::delete('levelRequirements', "levelID = '$levelID' AND ownerID = '$userID'");
     DB::delete('levelRequirementsStatus', "levelID = '$levelID' AND ownerID = '$userID'");
@@ -15,7 +15,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'deleteLevel') {
 }
 
 if(isset($_POST['moveDown'])) {
-    $moveID = $_POST['moveDown'];
+    $moveID = htmlspecialchars($_POST['moveDown']);
     $levelToMove = DB::select('setOrder', 'levels', "ID = '$moveID'");
     $offset = $levelToMove['setOrder'] + 1;
 
@@ -25,7 +25,7 @@ if(isset($_POST['moveDown'])) {
 }
 
 if(isset($_POST['moveUp'])) {
-    $moveID = $_POST['moveUp'];
+    $moveID = htmlspecialchars($_POST['moveUp']);
     $levelToMove = DB::select('setOrder', 'levels', "ID = '$moveID'");
     $offset = $levelToMove['setOrder'] - 1;
 

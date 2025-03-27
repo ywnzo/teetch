@@ -2,17 +2,11 @@
 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php';
 
-$dir = '../public/storage/uploads/';
+$dir = $_SERVER['DOCUMENT_ROOT'] . '/public/storage/uploads/';
 $uploadOk = 1;
-$fileNames = [];
-$classID = isset($_POST['classID']) ? htmlspecialchars($_POST['classID']) : null;
-$lessonID = isset($_POST['lessonID']) ? htmlspecialchars($_POST['lessonID']) : '';
-$ownerID = htmlspecialchars($_COOKIE['userID']);
-$table = isset($_POST['table']) ? htmlspecialchars($_POST['table']) : null;
-
-if (!isset($classID) || !isset($ownerID) || !isset($table)) {
-    die("Missing required parameters.");
-}
+$fileName = [];
+$userID = htmlspecialchars($_COOKIE['userID']);
+$table = isset($_POST['table']) ? $_POST['table'] : null;
 
 if (!file_exists($dir)) {
     if (!mkdir($dir, 0777, true)) {
@@ -39,11 +33,7 @@ fclose($log);
 
 if ($uploadOk == 1) {
     foreach($fileNames as $fileName) {
-        if($lessonID !== '') {
-            $sql = "INSERT INTO $table (classID, lessonID, ownerID, file) values ('$classID', '$lessonID', '$ownerID', '$fileName')";
-        } else {
-            $sql = "INSERT INTO $table (classID, ownerID, file) values ('$classID', '$ownerID', '$fileName')";
-        }
+        $sql = "UPDATE users SET image = '$fileName' WHERE userID = '$userID'";
         $result = mysqli_query($conn, $sql);
         if (!$result) {
             die("Error inserting data into database.");

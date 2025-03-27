@@ -18,10 +18,6 @@ $image = $user['image'];
         <div class="w-100 col gap-05r">
             <input type="text" name="name" value="<?php echo $user['name']; ?>">
             <input type="email" name="email" value="<?php echo $user['email']; ?>">
-            <select name="role" id="">
-                <option value="Student">Student</option>
-                <option value="Teacher">Teacher</option>
-            </select>
         </div>
 
         <div class="w-100 col al-c gap-05r">

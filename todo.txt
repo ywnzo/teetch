@@ -1,10 +1,7 @@
 
-Secure all inputs and outputs
-
 Index Page
 
 ?? Make it so after you change level it saves it and shows the page of it
-
 
 Email send on new class update
 Email send on class join request
@@ -16,3 +13,5 @@ Email send on registration verification result
 Password recovery
 
 Profile edit
+
+Secure all inputs and outputs

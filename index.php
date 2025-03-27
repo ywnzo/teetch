@@ -8,19 +8,28 @@ if(!$authOK) {
     include('auth.php');
 }
 
+$action = $_GET['action'] ?? 'login';
+if($action != 'login' && $action != 'register') {
+    $action = 'login';
+}
+
 ?>
 
 <?php include('comps/header.php') ?>
 
 <div class="content-wrapper">
     <?php if(!$authOK): ?>
-        <div style="">
-            <h1 class="title-main">TEECH</h1>
-            <h2 style="margin-bottom: 2rem;">Easily manage your classes!</h2>
-            <div class="row" style="justify-content: center; height: 80%; gap: 2rem;">
-                <?php include('comps/auth/login_form.php'); ?>
-                <?php include('comps/auth/register_form.php'); ?>
+        <div class="col al-c gap-3r">
+            <h1 style="text-align: center;">Easily manage your classes!</h1>
+            <div class="row js-c">
+                <?php if($action === 'login'): ?>
+                    <?php include('comps/auth/login_form.php'); ?>
+                <?php elseif($action === 'register'): ?>
+                    <?php include('comps/auth/register_form.php'); ?>
+                <?php endif; ?>
             </div>
+
+            <h3 style="text-align: center; font-color: var(--red);">Try also our flash cards platform called <a class="bold clickable" href="https://flard.free.nf" target="_blank">FLARD</a></h3>
         </div>
     <?php else: ?>
         <?php include('comps/home.php') ?>

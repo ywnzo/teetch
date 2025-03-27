@@ -1,7 +1,12 @@
-<form class="col" action="index.php" method="POST" style="min-height: 100%; gap: 16px;">
+<form class="col" action="index.php?action=login" method="POST" style="min-height: 100%; gap: 16px;">
     <h1>Login</h1>
-    <input type="email" name="email" placeholder="Email" value="<?php echo $email ?>">
-    <input type="password" name="password" placeholder="Password" value="<?php echo $password ?>">
-    <span class="text-error"> <?php echo $errLogin ?>  </span>
-    <input style="min-width: 12rem; max-width: 12rem;" type="submit" value="Login" class="btn-main">
+    <div class="col gap-05r">
+        <input type="email" name="email" placeholder="Email" value="<?php echo $email ?>">
+        <input type="password" name="password" placeholder="Password" value="<?php echo $password ?>">
+    </div>
+
+    <a class="horizontal" href="index.php?action=register">Need an account?</a>
+    <button type="submit" value="login" class="bubble black bold clickable">Login</button>
+    <span class="bold"> <?php echo $errLogin ?>  </span>
+
 </form>

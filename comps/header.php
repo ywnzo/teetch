@@ -19,11 +19,9 @@ function rand_color() {
     <link rel="icon" type="image/x-icon" href="public/img/logo.png">
     <link rel="stylesheet" href="public/css/style.css?<?=filemtime('style.css'); ?>">
 
-    <link href="public/fa/css/fontawesome.css" rel="stylesheet" />
-    <link href="public/fa/css/brands.css" rel="stylesheet" />
-    <link href="public/fa/css/solid.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/fd483a54f1.js" crossorigin="anonymous"></script>
 
-    <title>Teetch - <?php echo $user['name']; ?></title>
+    <title>Teetch <?php echo isset($user) ? ' - ' . $user['name'] : ''; ?></title>
 </head>
 <body>
 <script>0</script>
@@ -41,6 +39,7 @@ function rand_color() {
         </div>
 
         <ul class="row gap-05r al-c">
+
             <?php if(isset($user)): ?>
                 <li>
                     <a class="nav-link bubble clickable black" href="class.php?action=create" title="Classes">
@@ -60,14 +59,18 @@ function rand_color() {
                         <img class="profile-img" style="width: 38px; height: 38px; " src=<?= $user['image']; ?> alt="Profile">
                     </a>
                 </li>
+                <li>
+                    <a class="nav-link bubble horizontal red" href="logout.php" title="Logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <p class="nav-link bubble red"title="Made with love">
+                        <i class="fa-solid fa-heart"></i>
+                    </p>
+                </li>
             <?php endif; ?>
-            <!--
-            <li>
-                <a class="nav-link bubble horizontal red" href="logout.php" title="Logout">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </a>
-            </li>
-            -->
         </ul>
     </div>
 </div>

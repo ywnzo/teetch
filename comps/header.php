@@ -26,7 +26,7 @@ if($pageName == 'Index') {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oldenburg&display=swap&family=Galindo&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="public/img/logo.png">
-    <link rel="stylesheet" href="public/css/style.css?<?=filemtime('style.css'); ?>">
+    <link rel="stylesheet" href="public/css/style.css?v=<?php echo  filemtime('public/css/style.css'); ?>">
 
     <script src="https://kit.fontawesome.com/fd483a54f1.js" crossorigin="anonymous"></script>
 

@@ -78,6 +78,3 @@ if(!isset($teacher)) {
 
     <?php include('comps/chat.php'); ?>
 </div>
-
-<script type="module" src="public/js/modal.js"></script>
-<script src="public/js/file_upload.js"></script>

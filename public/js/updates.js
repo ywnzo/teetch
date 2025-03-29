@@ -1,4 +1,3 @@
-import Modal from './modal.js';
 
 var addBtns = document.querySelectorAll('.add-btn');
 var addWrappers = document.querySelectorAll('.add-wrapper');
@@ -6,8 +5,6 @@ var addWrappers = document.querySelectorAll('.add-wrapper');
 var updateTexts = document.querySelectorAll('.update-text');
 var deleteBtns = document.querySelectorAll('.update-delete-btn');
 var editBtns = document.querySelectorAll('.update-edit-btn');
-
-var add_student_button = document.querySelector("#add_student_button");
 
 var url = window.location.href;
 var params = new URLSearchParams(new URL(url).search);
@@ -180,12 +177,6 @@ function main() {
     link.classList.add('horizontal');
     link.addEventListener('focus', remove_focus)
   })
-
-  if(add_student_button) {
-    add_student_button.addEventListener('click', () => {
-      new Modal().open_input('Test', 'Enter email address...', callback);
-    })
-  }
 }
 
 main();

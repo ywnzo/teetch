@@ -91,5 +91,3 @@ $levels = Utils::get_array(DB::select("*", "levelSets", "ownerID = '$userID'"));
 
     </form>
 </div>
-
-<script src="public/js/create_class.js"></script>

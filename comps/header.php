@@ -30,8 +30,30 @@ if($pageName == 'Index') {
 
     <script src="https://kit.fontawesome.com/fd483a54f1.js" crossorigin="anonymous"></script>
 
+    <script src="public/js/index.js"></script>
+    <script src="public/js/cookies.js" defer></script>
+    <script src="public/js/file_upload.js" defer></script>
+    <script src="public/js/file_upload_single.js" defer></script>
+    <script src="public/js/chat.js" defer></script>
+    <script src="public/js/class_levels.js" defer></script>
+    <script src="public/js/create_class.js" defer></script>
+    <script src="public/js/level_requirements.js" defer></script>
+
     <title>Teetch - <?php echo $pageName ?></title>
 </head>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q32TZVY36W"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q32TZVY36W');
+</script>
+
+
 <body>
 <script>0</script>
 <div class="header">
@@ -65,7 +87,7 @@ if($pageName == 'Index') {
                 </li>
                 <li>
                     <a class="row al-c bold clickable" href="profile.php?user=<?php echo $userID; ?>" title="Your profile">
-                        <img class="profile-img" style="width: 38px; height: 38px; " src=<?= $user['image']; ?> alt="Profile">
+                        <img class="profile-img" style="width: 38px; height: 38px; " src=<?= $user['image']; ?> alt="">
                     </a>
                 </li>
                 <li>

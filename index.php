@@ -47,5 +47,3 @@ if($action != 'login' && $action != 'register') {
 </div>
 
 <?php include('comps/footer.php') ?>
-
-<script src="public/js/index.js"></script>

@@ -33,6 +33,7 @@ function create_time() {
 }
 
 function main() {
+  if(!addTimeBtn) return;
   addTimeBtn.addEventListener('click', (e) => {
     if(!day || !timeStart || !timeEnd) {
       return;

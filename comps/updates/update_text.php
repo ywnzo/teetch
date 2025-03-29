@@ -1,6 +1,7 @@
 <?php
     $ownerID = $update['ownerID'];
     $owner = DB:: select('name', 'users', "ID = '$ownerID'");
+    $ownerImage = isset($owner['image']) ? htmlspecialchars($owner['image']) : 'public/img/profile-default.svg';
 ?>
 
 <div class="update-item-wrapper <?php echo $update['ownerID'] === $userID ? 'row' : 'row-rev' ?> al-e gap-05r">
@@ -16,7 +17,7 @@
         <div class="row bold space-between al-c">
             <a class="horizontal" href="profile.php?id=<?php echo $ownerID ?>">
                 <div class="row al-c gap-05r">
-                    <img class="profile-img" style="width: 2rem; height: 2rem;" src="public/img/profile-default.png" alt="">
+                    <img class="profile-img" style="width: 2rem; height: 2rem;" src="<?php echo $ownerImage ?>" alt="">
                     <p><?php echo $owner['name'] ?></p>
                 </div>
             </a>

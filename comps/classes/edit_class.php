@@ -119,5 +119,3 @@ $timeIndex = 0;
 
     <p><?php echo $mssg ?></p>
 </div>
-
-<script src="public/js/create_class.js"></script>

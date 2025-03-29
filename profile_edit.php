@@ -37,6 +37,3 @@ $image = $user['image'];
 
 
 <?php include('comps/footer.php') ?>
-
-<script type="module" src="public/js/cookies.js"></script>
-<script src="public/js/file_upload_single.js"></script>

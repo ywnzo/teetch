@@ -81,30 +81,32 @@ $canInvite = false;
                                 </a>
                             <?php endif; ?>
 
-                            <?php if($isTeacher): ?>
-                                <?php if($canInvite): ?>
-                                    <button type="button" id="add_student_button" class="bubble bold clickable <?php echo rand_color()?>">
-                                        <i class="fa-solid fa-user-plus"></i>
-                                    </button>
-                                <?php endif; ?>
+                            <?php if($canInvite): ?>
+                                <button type="button" id="add_student_button" class="bubble bold clickable <?php echo rand_color()?>">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </button>
+                            <?php endif; ?>
 
-                                <?php if($table != 'lessonUpdates'): ?>
-                                    <a href="class_levels.php?class=<?= $classID ?>" class="bubble bold clickable <?php echo rand_color()?>">
-                                        <i class="fa-solid fa-stairs"></i>
-                                    </a>
-                                    <a href="class.php?class=<?= $classID ?>&action=edit" class="bubble bold clickable <?php echo rand_color()?>">
-                                        <i class="fa-solid fa-gear"></i>
-                                    </a>
-                                <?php else: ?>
-                                    <a href="lesson_plan.php?class=<?= $classID ?>&lesson=<?php echo $lessonID ?>&action=edit" class="bubble bold clickable <?php echo rand_color()?>">
-                                        <i class="fa-solid fa-gear"></i>
-                                    </a>
-                                <?php endif; ?>
-
+                            <?php if($table != 'lessonUpdates'): ?>
+                                <a href="class_levels.php?class=<?= $classID ?>" class="bubble bold clickable <?php echo rand_color()?>">
+                                    <i class="fa-solid fa-stairs"></i>
+                                </a>
+                                <a href="class.php?class=<?= $classID ?>&action=edit" class="bubble bold clickable <?php echo rand_color()?>">
+                                    <i class="fa-solid fa-gear"></i>
+                                </a>
                                 <a href="class.php?action=view&class=<?= $classID ?>&delete=true" class="bubble bold clickable <?php echo rand_color()?>">
                                     <i class="fa-solid fa-trash"></i>
                                 </a>
+                            <?php else: ?>
+                                <a href="lesson_plan.php?class=<?= $classID ?>&lesson=<?php echo $lessonID ?>&action=edit" class="bubble bold clickable <?php echo rand_color()?>">
+                                    <i class="fa-solid fa-gear"></i>
+                                </a>
+                                <a href="lesson_plan.php?class=<?= $classID ?>&lesson=<?php echo $lessonID ?>&delete=true" class="bubble bold clickable <?php echo rand_color()?>">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
                             <?php endif; ?>
+
+
 
                         </div>
                     <?php endif; ?>
@@ -166,5 +168,3 @@ $canInvite = false;
         </div>
     <?php endif; ?>
 </div>
-
-<script type="module" src="public/js/chat.js"></script>

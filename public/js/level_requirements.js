@@ -1,7 +1,4 @@
 
-
-import { COOKIES } from './cookies.js';
-
 var cookies = new COOKIES();
 
 var url = window.location.href;

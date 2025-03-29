@@ -113,6 +113,3 @@ $times = json_decode($class['times'], true);
 
 
 <?php include('comps/footer.php') ?>
-
-<script type="module" src="public/js/modal.js"></script>
-<script src="public/js/file_upload.js"></script>

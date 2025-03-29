@@ -184,6 +184,3 @@ if($isTeacher) {
 
 
 <?php include('comps/footer.php') ?>
-
-<script type="module" src="public/js/modal.js"></script>
-<script src="public/js/file_upload.js"></script>

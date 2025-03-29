@@ -220,5 +220,3 @@ $backURL = "class.php?action=view&class={$class['ID']}";
 
 
 <?php include('comps/footer.php') ?>
-
-<script src="public/js/class_levels.js"></script>

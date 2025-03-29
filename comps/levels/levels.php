@@ -113,6 +113,3 @@ if(isset($_POST['moveUp'])) {
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
-
-<script type="module" src="public/js/cookies.js"></script>
-<script type="module" src="public/js/level_requirements.js"></script>

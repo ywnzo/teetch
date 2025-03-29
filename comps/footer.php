@@ -4,7 +4,7 @@
 ?>
 
 <footer class="row space-between al-c">
-    <p style="font-size: small"> © 2024 - <?php echo date('Y'); ?> Teetch - All Rights Reserved.  </p>
+    <p style="font-size: small"> © <?php echo date('Y'); ?> Teetch - All Rights Reserved.  </p>
 
     <ul class="row gap-05r ">
         <!-- <li><a class="clickable" href="https://ko-fi.com/ywnzo">Support</a></li> -->

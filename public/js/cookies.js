@@ -1,5 +1,5 @@
 
-export class COOKIES {
+class COOKIES {
 
   GET_COOKIE(name) {
     var decodedCookie = decodeURIComponent(document.cookie);

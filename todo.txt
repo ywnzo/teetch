@@ -1,5 +1,6 @@
+Open the lasr level on req added
+Profile edit
 
-Index Page
 
 ?? Make it so after you change level it saves it and shows the page of it
 
@@ -12,6 +13,5 @@ Email send on registration verification
 Email send on registration verification result
 Password recovery
 
-Profile edit
 
 Secure all inputs and outputs

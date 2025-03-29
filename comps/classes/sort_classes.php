@@ -22,7 +22,7 @@ function sort_classes($classes) {
     return $classesSorted;
 }
 
-$classes = Utils::get_array(DB::select('*', 'classes', "teacherID = '$userID' OR JSON_VALID(students)"));
+$classes = Utils::get_array(DB::select('*', 'classes', "teacherID = '$userID' OR JSON_VALID(students) AND JSON_CONTAINS(students, '$userID')"));
 $classesSorted = sort_classes($classes);
 $days = array_keys($classesSorted);
 

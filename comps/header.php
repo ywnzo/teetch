@@ -5,6 +5,15 @@ function rand_color() {
     return $colors[array_rand($colors)];
 }
 
+$pageName = basename($_SERVER['SCRIPT_NAME']);
+$pageName = explode('.', $pageName)[0];
+$pageName = str_replace('_', ' ', $pageName);
+$pageName = str_replace('-', ' ', $pageName);
+$pageName = ucfirst($pageName);
+
+if($pageName == 'Index') {
+    $pageName = 'Home';
+}
 
 ?>
 
@@ -15,13 +24,13 @@ function rand_color() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oldenburg&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oldenburg&display=swap&family=Galindo&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="public/img/logo.png">
     <link rel="stylesheet" href="public/css/style.css?<?=filemtime('style.css'); ?>">
 
     <script src="https://kit.fontawesome.com/fd483a54f1.js" crossorigin="anonymous"></script>
 
-    <title>Teetch <?php echo isset($user) ? ' - ' . $user['name'] : ''; ?></title>
+    <title>Teetch - <?php echo $pageName ?></title>
 </head>
 <body>
 <script>0</script>

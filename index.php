@@ -19,17 +19,42 @@ if($action != 'login' && $action != 'register') {
 
 <div class="content-wrapper">
     <?php if(!$authOK): ?>
-        <div class="col al-c gap-3r">
-            <h1 style="text-align: center;">Easily manage your classes!</h1>
-            <div class="row js-c">
-                <?php if($action === 'login'): ?>
-                    <?php include('comps/auth/login_form.php'); ?>
-                <?php elseif($action === 'register'): ?>
-                    <?php include('comps/auth/register_form.php'); ?>
-                <?php endif; ?>
+        <div class="col al-s gap-2r">
+
+            <div class="col">
+                <h2 style="align-self: start;" class="bubble yellow">Manage classes.</h2>
+                <h2 style="align-self: end;" class="bubble blue">Update students.</h2>
+                <h2 style="align-self: start;" class="bubble green">Create lesson plans.</h2>
+                <h2 style="align-self: end;" class="bubble orange">All in one place!</h2>
             </div>
 
-            <h3 style="text-align: center; font-color: var(--red);">Try also our flash cards platform called <a class="bold clickable" href="https://flard.free.nf" target="_blank">FLARD</a></h3>
+            <?php if($action === 'login'): ?>
+                <?php include('comps/auth/login_form.php'); ?>
+            <?php elseif($action === 'register'): ?>
+                <?php include('comps/auth/register_form.php'); ?>
+            <?php endif; ?>
+
+
+
+
+
+
+            <div class="col gap-1r" style="margin-top: 1rem;">
+                <p style="font-size: large;">Check out my other platform for managing flash cards!</p>
+                <div class="row space-between">
+                    <div class="promo-link-wrapper">
+                        <a class="promo-link" href="https://flard.free.nf">FLARD</a>
+                        <img class="promo-img" src="public/img/flard/flard_sets.png" alt="">
+                    </div>
+
+                    <!--
+                    <div class="promo-link-wrapper">
+                        <a class="promo-link" href="https://flard.free.nf">FREE.NF</a>
+                        <img class="promo-img" src="public/img/flard/flard_flash.png" alt="">
+                    </div>
+                    -->
+                </div>
+            </div>
         </div>
     <?php else: ?>
         <?php include('comps/home.php') ?>

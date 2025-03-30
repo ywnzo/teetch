@@ -19,3 +19,4 @@ function main() {
 }
 
 main();
+console.log('Hello there :)');

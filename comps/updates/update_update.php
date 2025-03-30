@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/config/db_connect.php';
 
 if(!isset($_POST['updateID']) || !isset($_POST['text']) || !isset($_POST['content'])) {
     die("Invalid request");

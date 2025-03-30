@@ -37,7 +37,7 @@ $dateJoined = $dateJoined->format('d. M Y');
 
 <div class="content-wrapper">
     <div class="row gap-05r space-between box-sizing: border-box;">
-        <img src=<?= $profileUser['image'] ?> alt="" style="max-width: 320px; max-height: 320px; border-radius: 50%; object-fit: cover; aspect-ratio: 1; border: 2px solid var(--black);">
+        <img src=<?= $profileUser['image'] ?> alt="" style="max-width: 320px; max-height: 320px; width: 50%;border-radius: 50%; object-fit: cover; aspect-ratio: 1; border: 2px solid var(--black);">
         <div class="col al-s js-c gap-1r" style="width: 40%; box-sizing: border-box;">
             <h1><?= $profileUser['name'] ?></h1>
             <p><b><?= $profileUser['role'] ?></b></p>

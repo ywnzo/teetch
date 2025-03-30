@@ -30,14 +30,13 @@ if($pageName == 'Index') {
 
     <script src="https://kit.fontawesome.com/fd483a54f1.js" crossorigin="anonymous"></script>
 
-    <script src="public/js/index.js"></script>
-    <script src="public/js/cookies.js" defer></script>
-    <script src="public/js/file_upload.js" defer></script>
-    <script src="public/js/file_upload_single.js" defer></script>
-    <script src="public/js/chat.js" defer></script>
-    <script src="public/js/class_levels.js" defer></script>
-    <script src="public/js/create_class.js" defer></script>
-    <script src="public/js/level_requirements.js" defer></script>
+    <script src="public/js/index.js?v=<?php echo  filemtime('public/js/index.js'); ?>" defer></script>
+    <script src="public/js/cookies.js?v=<?php echo  filemtime('public/js/cookies.js'); ?>" defer></script>
+    <script src="public/js/file_upload.js?v=<?php echo  filemtime('public/js/file_upload.js'); ?>" defer></script>
+    <script src="public/js/updates.js?v=<?php echo  filemtime('public/js/updates.js'); ?>" defer></script>
+    <script src="public/js/class_levels.js?v=<?php echo  filemtime('public/js/class_levels.js'); ?>" defer></script>
+    <script src="public/js/create_class.js?v=<?php echo  filemtime('public/js/create_class.js'); ?>" defer></script>
+    <script src="public/js/level_requirements.js?v=<?php echo  filemtime('public/js/level_requirements.js'); ?>" defer></script>
 
     <title>Teetch - <?php echo $pageName ?></title>
 </head>

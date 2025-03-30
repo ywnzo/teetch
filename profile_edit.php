@@ -25,7 +25,7 @@ $image = $user['image'];
 
             <div class="file-select">
                 <button type="button" class="bubble bold clickable red"onclick="file_explorer();">Select Image</button>
-                <input type="file" id="select-file" name="image" accept="image/*">
+                <input type="file" id="select-file-single" name="image" accept="image/*">
             </div>
 
         </div>

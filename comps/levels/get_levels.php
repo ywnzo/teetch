@@ -1,9 +1,9 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/config/db_connect.php';
 
 if(!$conn) {
-    die($_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php');
+    die($_SERVER['DOCUMENT_ROOT'] . '/config/db_connect.php');
 }
 
 if(!isset($_POST['setID'])) {

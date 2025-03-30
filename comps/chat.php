@@ -19,22 +19,8 @@ function create_update($classID, $lessonID, $userID, $table) {
         } else {
             DB::insert($table, 'classID, ownerID, text', "'$classID', '$userID', '$text'");
         }
-        header('Location: ' . $url);
     } else {
         $error = 'No text provided';
-    }
-
-    if(isset($_POST['update-link']) && !empty($_POST['update-link'])) {
-        $link = $_POST['update-link'];
-        if(isset($lessonID)) {
-            $lessonID = $_POST['lessonID'];
-            DB::insert($table, 'classID, ownerID, lessonID, link', "'$classID', '$userID', '$lessonID', '$text'");
-        } else {
-            DB::insert($table, 'classID, ownerID, link', "'$classID', '$userID', '$text'");
-        }
-        header('Location: ' . $url);
-    } else {
-        $error = 'No link provided';
     }
 }
 
@@ -114,10 +100,6 @@ $canInvite = false;
 
                 <div class="add-wrapper w-100" cat="text">
                     <textarea class="w-100" name="update-text" id="update-text" rows="4" placeholder="Enter text..."></textarea>
-                </div>
-
-                <div class="add-wrapper w-100" cat="link" style="display: none;">
-                    <input type="text" class="w-100" name="update-link" id="update-link" placeholder="Enter link...">
                 </div>
 
                 <div class="add-wrapper w-100 col" id="file-wrapper" cat="file" style="display: none;" ondrop="upload_file(event)" ondragover="return false">

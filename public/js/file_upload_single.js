@@ -1,22 +1,24 @@
-var selectFile = document.getElementById('select-file');
+
+
+var selectFileSingle = document.getElementById('select-file-single');
 
 var url = window.location.href;
 var params = new URLSearchParams(new URL(url).search);
 
-function upload_file(e) {
+function upload_file_single(e) {
   e.preventDefault();
-  ajax_file_upload(e.dataTransfer.files);
+  ajax_file_upload_single(e.dataTransfer.files);
 }
 
-function file_explorer() {
-  selectFile.click();
-  selectFile.onchange = function() {
-    var files = selectFile.files;
-    ajax_file_upload(files);
+function file_explorer_single() {
+  selectFileSingle.click();
+  selectFileSingle.onchange = function() {
+    var files = selectFileSingle.files;
+    ajax_file_upload_single(files);
   }
 }
 
-function ajax_file_upload(files_obj) {
+function ajax_file_upload_single(files_obj) {
     if(files_obj === undefined) {
       return;
     }

@@ -20,7 +20,7 @@ if($action != 'login' && $action != 'register') {
 <div class="content-wrapper">
     <?php if(!$authOK): ?>
         <div class="col al-s gap-2r">
-            <div class="col">
+            <div class="col gap-05r">
                 <h2 style="align-self: start;" class="bubble yellow">Manage classes.</h2>
                 <h2 style="align-self: end;" class="bubble blue">Update students.</h2>
                 <h2 style="align-self: start;" class="bubble green">Create lesson plans.</h2>

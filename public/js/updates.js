@@ -130,7 +130,7 @@ function load_add_btns() {
       })
 
       document.querySelector('#update-text').value = '';
-      document.querySelector('#update-link').value = '';
+      //document.querySelector('#update-link').value = '';
     })
   })
 }

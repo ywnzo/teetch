@@ -1,6 +1,6 @@
 <?php
 
-include_once $_SERVER['DOCUMENT_ROOT'] . '/teetch/config/db_connect.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/config/db_connect.php';
 
 if(!isset($_POST['ID']) || !isset($_POST['levelID']) || !isset($_POST['name'])) {
     die("Invalid request");

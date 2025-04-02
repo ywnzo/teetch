@@ -5,6 +5,26 @@ include('config/verify_login.php');
 
 include('classes/utils.php');
 
+if(isset($_POST['save'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+
+    $errors = [];
+
+    if(empty($name)) {
+        $errors[] = 'Name is required';
+    }
+
+    if(empty($email)) {
+        $errors[] = 'Email is required';
+    }
+
+
+    if(empty($errors)) {
+        DB::update('users', "name = '$name', email = '$email'", "id = '{$_COOKIE['userID']}'");
+    }
+}
+
 $image = $user['image'];
 
 ?>
@@ -21,19 +41,21 @@ $image = $user['image'];
         </div>
 
         <div class="w-100 col al-c gap-05r">
-            <img src="public/img/profile-default.png" alt="public/img/profile-default.png" class="profile-img" style="width: 180px; height: 180px;">
+            <img src="<?php echo $image ? $image : 'public/img/profile-default.svg'; ?>" alt="" class="profile-img" style="width: 180px; height: 180px;">
 
-            <div class="file-select">
-                <button type="button" class="bubble bold clickable red"onclick="file_explorer();">Select Image</button>
+            <div class="file-select" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <button type="button" class="bubble bold clickable red"onclick="file_explorer_single();">Select Image</button>
                 <input type="file" id="select-file-single" name="image" accept="image/*">
             </div>
 
         </div>
 
-        <button type="submit"class="w-100 bubble black bold clickable">Save</button>
+        <button type="submit" name="save" class="w-100 bubble black bold clickable">Save</button>
     </form>
 
 </div>
 
 
 <?php include('comps/footer.php') ?>
+
+<script src="public/js/file_upload_single.js?v=<?php echo  filemtime('public/js/file_upload_single.js'); ?>"></script>

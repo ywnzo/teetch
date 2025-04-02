@@ -12,8 +12,9 @@ function update_lesson_plan($lessonID) {
 }
 
 function get_lesson() {
+    global $userID;
     $lessonID = htmlspecialchars($_GET['lesson']);
-    $lesson = DB::select('*', 'lessons', "ID = '$lessonID'");
+    $lesson = DB::select('*', 'lessons', "ID = '$lessonID' AND teacherID = '$userID'");
     if(!$lesson || !is_array($lesson) || empty($lesson)) {
         header("Location: index.php");
     }

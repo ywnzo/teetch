@@ -30,6 +30,8 @@ include('comps/classes/sort_classes.php');
 $dateJoined = new DateTime($profileUser['createdAt']);
 $dateJoined = $dateJoined->format('d. M Y');
 
+$image = isset($profileUser['image']) && !empty($profileUser['image']) ? $profileUser['image'] : 'public/img/profile-default.svg';
+
 
 ?>
 
@@ -37,17 +39,21 @@ $dateJoined = $dateJoined->format('d. M Y');
 
 <div class="content-wrapper">
     <div class="row gap-05r space-between box-sizing: border-box;">
-        <img src=<?= $profileUser['image'] ?> alt="" style="max-width: 320px; max-height: 320px; width: 50%;border-radius: 50%; object-fit: cover; aspect-ratio: 1; border: 2px solid var(--black);">
+        <img src="<?php echo $image ?>" alt="" style="max-width: 320px; max-height: 320px; width: 50%;border-radius: 50%; object-fit: cover; aspect-ratio: 1/1; border: 2px solid var(--black);">
         <div class="col al-s js-c gap-1r" style="width: 40%; box-sizing: border-box;">
-            <h1><?= $profileUser['name'] ?></h1>
-            <p><b><?= $profileUser['role'] ?></b></p>
+            <h1><?php echo $profileUser['name'] ?></h1>
+            <p><b><?php echo $profileUser['role'] ?></b></p>
             <a href="mailto:<?= $profileUser['email'] ?>" class="horizontal">
-                <?= $profileUser['email'] ?>
+                <?php echo $profileUser['email'] ?>
             </a>
             <div class="col al-s">
                 <p class="bold">Joined</p>
-                <p><?= $dateJoined ?></p>
+                <p><?php echo $dateJoined ?></p>
             </div>
+
+            <?php if($canEdit): ?>
+                <a class="bubble black bold clickable" href="profile_edit.php">Edit Profile</a>
+            <?php endif; ?>
         </div>
     </div>
 

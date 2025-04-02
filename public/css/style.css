@@ -441,7 +441,7 @@ input[type="submit"]:hover {
 #file-wrapper:hover {
     border: 2px solid var(--black);
 }
-#select-file { display: none;}
+#select-file, #select-file-single { display: none;}
 
 #update-text {
     padding: 0.8rem;

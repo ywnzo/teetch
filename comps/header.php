@@ -1,5 +1,4 @@
 <?php
-
 function rand_color() {
     $colors = ['red', 'green', 'yellow', 'purple', 'cyan', 'orange', 'violet'];
     return $colors[array_rand($colors)];
@@ -14,6 +13,8 @@ $pageName = ucfirst($pageName);
 if($pageName == 'Index') {
     $pageName = 'Home';
 }
+
+$headerImage = isset($user['image']) && !empty($user['image']) ? $user['image'] : 'public/img/profile-default.svg';
 
 ?>
 
@@ -86,7 +87,7 @@ if($pageName == 'Index') {
                 </li>
                 <li>
                     <a class="row al-c bold clickable" href="profile.php?user=<?php echo $userID; ?>" title="Your profile">
-                        <img class="profile-img" style="width: 38px; height: 38px; " src=<?= $user['image']; ?> alt="">
+                        <img class="profile-img" style="width: 38px; height: 38px; " src=<?php echo $headerImage ?> alt="">
                     </a>
                 </li>
                 <li>

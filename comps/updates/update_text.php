@@ -1,7 +1,7 @@
 <?php
     $ownerID = $update['ownerID'];
-    $owner = DB:: select('name', 'users', "ID = '$ownerID'");
-    $ownerImage = isset($owner['image']) ? htmlspecialchars($owner['image']) : 'public/img/profile-default.svg';
+    $owner = DB:: select('name, image', 'users', "ID = '$ownerID'");
+    $ownerImage = isset($owner['image']) && !empty($owner['image']) ? htmlspecialchars($owner['image']) : 'public/img/profile-default.svg';
 ?>
 
 <div class="update-item-wrapper <?php echo $update['ownerID'] === $userID ? 'row' : 'row-rev' ?> al-e gap-05r">

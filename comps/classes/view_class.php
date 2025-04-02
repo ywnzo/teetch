@@ -45,6 +45,8 @@ if(!isset($teacher)) {
     header("Location: index.php");
 }
 
+$teacherImage = isset($teacher['image']) && !empty($teacher['image']) ? $teacher['image'] : 'public/img/profile-default.svg';
+
 ?>
 
 <div class="col gap-1r">
@@ -63,7 +65,7 @@ if(!isset($teacher)) {
 
         <div class="row al-c space-between">
             <a href="profile.php?user=<?= $class['teacherID'] ?>" class="row gap-05r al-c bold horizontal">
-                <img src=<?= $teacher['image'] ?> alt="" class="profile-img" style="width: 32px; height: 32px;">
+                <img src=<?= $teacherImage ?> alt="" class="profile-img" style="width: 32px; height: 32px;">
                 <p class="f-large">
                     <?= $teacher['name'] ?>
                 </p>

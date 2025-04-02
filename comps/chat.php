@@ -1,13 +1,23 @@
 <?php
 
-$url = "{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-$url = htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' );
-
 $error = '';
 
-function get_updates($table, $id, $idType, $amount, $offset) {
-    $offset = $offset * $amount;
-    $updates = Utils::get_array(DB::select('*', $table, "{$idType} = '$id' ORDER BY ID DESC LIMIT {$amount} OFFSET {$offset}"));
+
+function get_updates_class() {
+    global $classID, $userID, $resultCount, $offset;
+    $updates = Utils::get_array(DB::select('*',
+    'classUpdates',
+    "classID = $classID AND ownerID = '$userID'
+        ORDER BY ID DESC LIMIT $resultCount OFFSET $offset"));
+    return $updates;
+}
+
+function get_updates_lesson() {
+    global $classID, $lessonID, $userID, $resultCount, $offset;
+    $updates = Utils::get_array(DB::select('*',
+    'lessonUpdates',
+    "classID = $classID AND lessonID = $lessonID AND ownerID = '$userID'
+        ORDER BY ID DESC LIMIT $resultCount OFFSET $offset"));
     return $updates;
 }
 
@@ -32,13 +42,16 @@ if(isset($_POST['update-submit'])) {
 $file_path = 'public/storage/uploads/';
 $imgExts = ['jpg', 'JPG', 'jpeg', 'JPEG', 'png', 'PNG', 'gif', 'GIF'];
 
-$id = $table === 'lessonPlan' ? $lessonID : $classID;
-$idType = $table === 'lessonPlan' ? 'lessonID' : 'classID';
 $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
 $resultCount = isset($_GET['count']) ? (int)$_GET['count'] : 15;
 
-$updates = get_updates($table, $id, $idType, $resultCount, $offset);
-$updateCount = DB::select('COUNT(ID) AS count', $table, "{$idType} = {$classID}");
+if($table === 'lessonUpdates') {
+    $updates = get_updates_lesson();
+    $updateCount = DB::select('COUNT(ID) AS count', 'lessonUpdates', "classID = $classID AND lessonID = $lessonID AND ownerID = '$userID'");
+} else {
+    $updates = get_updates_class();
+    $updateCount = DB::select('COUNT(ID) AS count', 'classUpdates', "classID = $classID AND ownerID = '$userID'");
+}
 
 $canInvite = false;
 
@@ -134,6 +147,7 @@ $canInvite = false;
         </div>
     </div>
 
+    <!--
     <?php if($updateCount['count'] >= 15): ?>
         <div class="page-btn-container row gap-05r bold">
             <?php for($i = 0; $i < $updateCount['count'] / $resultCount; $i++): ?>
@@ -149,4 +163,6 @@ $canInvite = false;
             <?php endfor; ?>
         </div>
     <?php endif; ?>
+
+    -->
 </div>
